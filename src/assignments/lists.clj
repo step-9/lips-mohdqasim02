@@ -7,7 +7,8 @@
   {:level        :medium
    :use          '[loop recur]
    :dont-use     '[map]}
-  [f & colls])
+  [f & colls]
+  ())
 
 (defn filter'
   "Implement a non-lazy version of filter that accepts a

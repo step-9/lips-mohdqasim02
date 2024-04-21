@@ -3,20 +3,20 @@
             [assignments.conditions :as c]))
 
 ;; When done with this, mark ^:implementing as ^:implemented
-(deftest ^:implementing safe-division-test
+(deftest ^:implemented safe-division-test
   (testing "non zero denominator"
     (is (= 2 (c/safe-divide 4 2))))
   (testing "zero denominator"
     (is (nil? (c/safe-divide 3 0)))))
 
 ;; when ready to implement mark ^:kaocha/pending as ^:implementing
-(deftest ^:kaocha/pending informative-division-test
+(deftest ^:implemented informative-division-test
   (testing "non zero denominator calculates result"
     (is (= 2 (c/informative-divide 4 2))))
   (testing "zero denominator yields :infinite"
     (is (= :infinite (c/informative-divide 3 0)))))
 
-(deftest ^:kaocha/pending harishchandra-test
+(deftest ^:implemented harishchandra-test
   (testing "falsy values"
     (is (nil? (c/harishchandra false)))
     (is (nil? (c/harishchandra nil))))
@@ -27,10 +27,10 @@
     (is (zero? (c/harishchandra 0)))
     (is (true? (c/harishchandra true)))))
 
-(deftest ^:kaocha/pending yudhishtira-test
+(deftest ^:implemented yudhishtira-test
   (testing "falsy values"
-    (is (false? (c/yudishtira false)))
-    (is (false? (c/yudishtira nil))))
+    (is (= :ashwathama (c/yudishtira false)))
+    (is (= :ashwathama (c/yudishtira nil))))
   (testing "truthy values"
     (is (= 2 (c/yudishtira 2)))
     (is (= "" (c/yudishtira "")))
