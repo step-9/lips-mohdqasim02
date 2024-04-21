@@ -4,8 +4,8 @@
   "Returns the result of x/y unless y is 0. Returns nil when y is 0"
   {:level :easy
    :use   '[when-not zero?]}
-  [x y] 
-  (when-not (zero? y) (/ x y))) 
+  [x y]
+  (when-not (zero? y) (/ x y)))
 
 (defn informative-divide
   "Returns the result of x/y unless y is 0. Returns :infinite when y is 0"
@@ -36,7 +36,8 @@
   {:level      :easy
    :use        '[when-first concat]
    :alternates '[empty? seq? conj into]}
-  [coll])
+  [coll]
+  (when-first [x coll] (conj coll x)))
 
 (defn five-point-someone
   "Returns :chetan-bhagat if y is 5.
@@ -45,7 +46,12 @@
   Otherwise it returns :universe"
   {:level :easy
    :use   '[cond]}
-  [x y])
+  [x y]
+  (cond
+    (= y 5) :chetan-bhagat
+    (= x 5) :satan-bhagat
+    (> x y) :greece
+    :else   :universe))
 
 (defn conditions-apply
   "Given a collection of any length, returns:
@@ -56,7 +62,13 @@
   {:level      :medium
    :use        '[condp filter]
    :alternates '[if cond]}
-  [coll])
+  [coll]
+  (condp #(= %1 (filter (set %1) %2)) coll
+    [1 3]          :wonder-woman
+    [:a :b :c]     :durga
+    [[2 3] [4 5]]  :cleopatra 
+    :tuntun
+    ))
 
 (defn repeat-and-truncate
   "Given coll and options to repeat and truncate
